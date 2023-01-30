@@ -2,7 +2,7 @@
   "name": "nodejsbtpoc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
@@ -24,7 +24,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
+    "express-jwt": "^8.3.0",
     "graphql": "^15.8.0",
+    "jwks-rsa": "^3.0.1",
     "mongoose": "^6.8.4"
   },
   "devDependencies": {
