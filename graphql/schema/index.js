@@ -14,9 +14,12 @@ type User {
    }
   type RootQuery{
       users: [User!]!
+      getUser(id: Int!): User!
   }
   type RootMutation{
     createUser(userInput: UserInput): User
+    editUser(userInput: UserInput): User
+    deleteUser(name: String!): User
   }
   schema{
     query: RootQuery

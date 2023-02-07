@@ -17,11 +17,11 @@ const schema = require('./graphql/schema/index')
 const resolvers = require('./graphql/resolvers/index')
 
 database.on('error', (error) => {
-   // console.log(error)
+   console.log(error)
 })
 
 database.once('connected', () => {
-   // console.log('Database Connected');
+    console.log('Database Connected');
 })
 
 var jwtCheck = jwt({

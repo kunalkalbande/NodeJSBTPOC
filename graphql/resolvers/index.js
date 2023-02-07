@@ -11,19 +11,50 @@ module.exports = {
         throw err;
        });
       },
+      getUser: (args) => {
+        console.log(args);
+        return Eventobj.findById('63e22513c8ce4d5417bdfb80').then(users => {
+            console.log(users);
+              return { ...users._doc, _id: users._doc._id.toString() };
+         }).catch(err => {
+          console.log('API Error',err);
+          throw err;
+         });
+        },
       createUser: (args) =>{
-        //console.log('user value',args)
+        console.log('user value',args)
         const event = new Eventobj({
           name: args.userInput.name,
           email: args.userInput.email,
           password: args.userInput.password
         });
         event.save().then(result => {
-            //console.log(result);
+            console.log(result);
             return {...result._doc};
         }).catch(err => {
-            //console.log(err);
+            console.log(err);
             throw err;
         })
-      }
+      },
+      editUser:(args)=>{
+        var data = { email : args.userInput.email , password : args.userInput.password }
+        var query = { name : args.userInput.name };
+        Eventobj.updateOne(query,data).then(result => {
+          console.log(result);
+          return {...result._doc};
+      }).catch(err => {
+          console.log(err);
+          throw err;
+      })
+        },
+        deleteUser:(args)=>{
+          var query = { name : args.name };
+          Eventobj.deleteOne(query).then(result => {
+            console.log(result);
+            return {...result._doc};
+        }).catch(err => {
+            console.log(err);
+            throw err;
+        })
+          }
 };
