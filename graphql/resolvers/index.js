@@ -13,7 +13,7 @@ module.exports = {
       },
       getUser: (args) => {
         console.log(args);
-        return Eventobj.findById('63e22513c8ce4d5417bdfb80').then(users => {
+        return Eventobj.findById(args.id).then(users => {
             console.log(users);
               return { ...users._doc, _id: users._doc._id.toString() };
          }).catch(err => {
@@ -36,9 +36,10 @@ module.exports = {
             throw err;
         })
       },
-      editUser:(args)=>{
-        var data = { email : args.userInput.email , password : args.userInput.password }
-        var query = { name : args.userInput.name };
+      editUser:(id,args)=>{
+        console.log('edit user',id)
+        var data = { email : id.userInput.email , password : id.userInput.password }
+        var query = { name : id.userInput.name };
         Eventobj.updateOne(query,data).then(result => {
           console.log(result);
           return {...result._doc};
