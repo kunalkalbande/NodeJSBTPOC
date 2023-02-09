@@ -49,7 +49,7 @@ module.exports = {
       })
         },
         deleteUser:(args)=>{
-          var query = { name : args.name };
+          var query = { id : args.id };
           Eventobj.deleteOne(query).then(result => {
             console.log(result);
             return {...result._doc};

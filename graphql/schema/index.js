@@ -19,7 +19,7 @@ type User {
   type RootMutation{
     createUser(userInput: UserInput): User
     editUser(id: String!, userInput: UserInput): User
-    deleteUser(name: String!): User
+    deleteUser(id: String!): User
   }
   schema{
     query: RootQuery
